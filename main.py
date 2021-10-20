@@ -13,10 +13,10 @@ def caesar(start_text, shift_amount, cipher_direction):
         else:    
             position = alphabet.index(letter) #nova metoda (urci index prvku v listu list.index(prvek) )
             position_shifted = position + shift_amount
-            if position_shifted >= over_index: #kontola preteceni
-                position_shifted = position_shifted % over_index #pokud ano, modulo
-            elif position_shifted < 0: #pokud dostanu zaporne cislo, musim se presunout na konec listu
+            if position_shifted < 0: #pokud dostanu zaporne cislo, musim se presunout na konec listu
                 position_shifted = len(alphabet) + position_shifted #delka listu + zaporny position_shifted mi da spravne pismeno
+            else: 
+                position_shifted = position_shifted % over_index 
             end_text += alphabet[position_shifted]
     print(f"The {cipher_direction}d text is: {end_text}")
 
